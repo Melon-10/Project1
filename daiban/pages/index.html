@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>测试首页</title>
+</head>
+<body>
+    <h1>代办事项<h1>
+    <div>
+        <form action="/todo" method="post">
+        <input name="todo" placeholder="请添加代办事项">
+        <input type="submit" value="添加">
+        </form>
+    </div>
+
+    {% for todo in todos %}
+    <P>{{ todo }}</P>
+    {% endfor %}
+
+
+</body>
+</html>
