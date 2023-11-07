@@ -10,7 +10,7 @@ from daiban.dao.models import Todo
 app=FastAPI()
 template=Jinja2Templates("pages")
 
-# 数据库绑定
+# 数据库绑定1
 register_tortoise(app,db_url="mysql://root:123456@localhost:3306/fastapi",
                   modules={"models":['dao.models']},
                   add_exception_handlers=True,
