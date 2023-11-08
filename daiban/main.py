@@ -11,8 +11,8 @@ app=FastAPI()
 template=Jinja2Templates("pages")
 
 # 数据库绑定
-register_tortoise(app,db_url="mysql://root:123456@localhost:3306/fastapi",
-                  modules={"models":['dao.models']},
+register_tortoise(app,db_url="mysql://root:!QAZ2wsx@123.57.219.217:3306/fastapi",
+                  modules={"models":['daiban.dao.models']},
                   add_exception_handlers=True,
                   generate_schemas=True)
 
@@ -26,8 +26,8 @@ async def user(req:Request):
     return template.TemplateResponse("index.html",context={"request":req,"todos":todos})
 
 @app.post("/todo")
-def todo(todo=Form(None)):
-    todos.insert(0,todo)
+async def todo(todo=Form(None)):
+    await Todo(content=todo).save()
     return RedirectResponse("/",status_code=302)
 
 if __name__ == '__main__':
